@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}} - Richard's Bookshop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Richard's Bookshop!</h1>
+        <h2>Here are just a few of our satisfied customer!</h2>
+    </header>
+        <div class="menu">
+            <nav>
+                <a href="/">Home</a>
+                <a href="/">About</a>
+                <a href="/">Contact</a>
+            </nav>
+        </div>
+        <main>
+            {% for order in orders %}
+            <div>
+                <p>{{order.customer_name}}: {{order.book_title}}</p>
+                <a href="{{ url_for('single_task', id=order.id) }}">View Order</a>
+            </div>
+            {% endfor %}
+        </main>
+    <footer>
+        <h2>Bookshop Ltd 2023</h2>
+    </footer>
+    
+</body>
+</html>
